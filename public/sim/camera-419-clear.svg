@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Simulated traffic camera frame: Rte 419 south of Keagy Rd, traffic flowing">
+  <rect width="640" height="360" fill="#6b7f8e"/>
+  <rect y="0" width="640" height="120" fill="#9fb3c2"/>
+  <path d="M0 120 L640 120 L640 150 L0 150Z" fill="#4f6b3a"/>
+  <polygon points="250,120 390,120 640,360 0,360" fill="#3d4247"/>
+  <polygon points="317,120 323,120 330,360 310,360" fill="#e8c547"/>
+  <g fill="#f4f4f4"><rect x="270" y="160" width="4" height="22"/><rect x="258" y="210" width="5" height="30"/><rect x="240" y="280" width="7" height="44"/>
+  <rect x="366" y="160" width="4" height="22"/><rect x="378" y="210" width="5" height="30"/><rect x="394" y="280" width="7" height="44"/></g>
+  <rect x="345" y="175" width="34" height="22" rx="4" fill="#bfc6cc"/><rect x="232" y="235" width="46" height="30" rx="5" fill="#8a2b2b"/>
+  <rect x="0" y="0" width="640" height="28" fill="rgba(0,0,0,.6)"/>
+  <text x="10" y="19" font-family="monospace" font-size="14" fill="#fff">VDOT CAM — RTE 419 (ELECTRIC RD) S OF KEAGY RD</text>
+  <text x="630" y="19" font-family="monospace" font-size="14" fill="#fff" text-anchor="end">SIMULATED FRAME</text>
+  <text x="320" y="345" font-family="sans-serif" font-size="16" fill="#fff" text-anchor="middle" opacity=".85">Traffic flowing — no obstruction visible</text>
+</svg>

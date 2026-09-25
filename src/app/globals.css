@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --color-ink: #0b1f33;
+  --color-ink-2: #13304d;
+  --color-ink-3: #1d4468;
+  --color-canvas: #f3f5f8;
+  --color-line: #d9dfe7;
+  --color-muted: #5b6b7d;
+
+  --color-brand: #0f5fbf;
+  --color-brand-dark: #0b4a96;
+  --color-brand-soft: #e6f0fb;
+
+  --color-life: #b42318;
+  --color-life-soft: #fdecea;
+  --color-pro: #c2410c;
+  --color-pro-soft: #fff1e7;
+  --color-trained: #a15c07;
+  --color-trained-soft: #fff7e0;
+  --color-general: #1d4ed8;
+  --color-general-soft: #e8efff;
+  --color-active: #0f766e;
+  --color-active-soft: #e3f5f2;
+  --color-forming: #6d28d9;
+  --color-forming-soft: #f1ebff;
+  --color-done: #15803d;
+  --color-done-soft: #e7f6ec;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: #0f1b2a;
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Visible, consistent focus for keyboard users. */
+:focus-visible {
+  outline: 3px solid #f5b400;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.5rem;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0.5rem;
+  background: #fff;
+  color: #0b1f33;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+/* Leaflet tweaks */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: #dfe5ec;
+}
+.map-muted .leaflet-tile-pane {
+  filter: saturate(0.35) brightness(1.04) contrast(0.95);
+}
+.coord-marker {
+  background: transparent;
+  border: none;
+}
+.leaflet-tooltip.coord-tip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 1.6s ease-out infinite;
+  transform-origin: center;
+}

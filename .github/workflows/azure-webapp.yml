@@ -1,0 +1,47 @@
+name: Deploy to Azure App Service
+
+# Builds the Next.js standalone server and deploys it to the Web App created by infra/main.bicep.
+#
+# Repository configuration:
+#   Variables: AZURE_WEBAPP_NAME           (e.g. coordinateab12cd-web)
+#   Secrets:   AZURE_WEBAPP_PUBLISH_PROFILE (Web App → Overview → Download publish profile)
+#
+# App settings (Cosmos DB, Azure Maps, AI Foundry keys) live on the Web App, not in GitHub.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: azure-webapp
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    if: ${{ vars.AZURE_WEBAPP_NAME != '' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.webapp-url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Assemble standalone bundle
+        run: node scripts/package-standalone.mjs
+      - name: Deploy
+        id: deploy
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ vars.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: deploy
